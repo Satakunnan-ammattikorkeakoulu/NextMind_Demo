@@ -19,13 +19,10 @@ public class Car : MonoBehaviour
 
     private int currentLane = 2;
 
-    // private bool isSwitchingLane = false;
     private bool isSwitchingLane;
 
-    // private int score = 0;
     private int score;
 
-    // private static bool _isEndGame = false;
     private static bool _isEndGame;
 
     public TMP_Text scoreText;

@@ -5,6 +5,9 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     private const float FlipDuration = 0.5f;
+
+    private bool isFlipping;
+
     public bool isFlipped;
     public bool isMatched;
     public int id;
@@ -14,6 +17,7 @@ public class Card : MonoBehaviour
     public void Flip()
     {
         // Debug.Log($"Flip {id}, Pair: {pair}");
+        if (MemoryGame.isWaiting) return;
         if (isFlipped)
         {
             StartCoroutine(FlipCard(transform.rotation, Quaternion.Euler(0, 0, 0)));

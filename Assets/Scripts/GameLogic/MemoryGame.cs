@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NextMind.Examples;
+using TMPro;
 using UnityEngine;
 using Random = System.Random;
 
@@ -14,11 +15,11 @@ public class MemoryGame : MonoBehaviour
     public AudioSource correct;
     public AudioSource wrong;
     public GameObject endGameScreen;
-    public GameObject backToHubButton;
-    public GameObject winText;
-    public GameObject loseText;
+    public TMP_Text endText;
     public List<GameObject> cards;
     public int flippedCards;
+
+    public static bool isWaiting;
 
     private void Start()
     {
@@ -40,7 +41,6 @@ public class MemoryGame : MonoBehaviour
     private void CardFlipped()
     {
         flippedCards++;
-        // Debug.Log($"Card flipped! Num: {flippedCards}");
         if (flippedCards == 2)
         {
             flippedCards = 0;
@@ -50,7 +50,9 @@ public class MemoryGame : MonoBehaviour
 
     private IEnumerator CheckCards()
     {
+        isWaiting = true;
         yield return new WaitForSeconds(FlipBackDelay);
+        isWaiting = false;
         var cardList = cards.Where(c => c.GetComponent<Card>().isFlipped && !c.GetComponent<Card>().isMatched)
             .ToList();
         if (cardList.Count == 2)
@@ -95,17 +97,15 @@ public class MemoryGame : MonoBehaviour
     private void YouWin()
     {
         DeactivateCards();
-        backToHubButton.SetActive(true);
+        endText.text = "You Win!";
         endGameScreen.SetActive(true);
-        winText.SetActive(true);
     }
 
     private void YouLose()
     {
         DeactivateCards();
-        backToHubButton.SetActive(true);
+        endText.text = "You Lose";
         endGameScreen.SetActive(true);
-        loseText.SetActive(true);
     }
 
     private void DeactivateCards()
