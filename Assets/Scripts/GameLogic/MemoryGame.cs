@@ -112,9 +112,4 @@ public class MemoryGame : MonoBehaviour
     {
         cards.ForEach(c => c.SetActive(false));
     }
-
-    public void GoToHome()
-    {
-        HubManager.Instance.BackToHubScene();
-    }
 }

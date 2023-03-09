@@ -1,12 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
+using NextMind.Examples;
 using UnityEngine;
-using UnityEngine.UIElements;
+using TMPro;
 
 public class Car : MonoBehaviour
 {
     private const float RotateDuration = 1f;
-    private const float MoveDuration = 5f;
+    private const float MoveDuration = 3f;
+    private const float WheelRotateSpeed = 300f;
 
     private readonly Vector3[] lanes =
     {
@@ -15,8 +16,26 @@ public class Car : MonoBehaviour
     };
 
     private Quaternion originalRotation;
+
     private int currentLane = 2;
-    private bool isSwitchingLane = false;
+
+    // private bool isSwitchingLane = false;
+    private bool isSwitchingLane;
+
+    // private int score = 0;
+    private int score;
+
+    // private static bool _isEndGame = false;
+    private static bool _isEndGame;
+
+    public TMP_Text scoreText;
+    public GameObject endGameScreen;
+    public GameObject uiButtons;
+    public GameObject frontLeftWheel;
+    public GameObject frontRightWheel;
+    public GameObject rearLeftWheel;
+    public GameObject rearRightWheel;
+    public AudioSource coinCollected;
 
     // Start is called before the first frame update
     private void Start()
@@ -26,18 +45,28 @@ public class Car : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Y)) SwitchLane(-1); // -1 == left
-        if (Input.GetKeyDown(KeyCode.U)) SwitchLane(1); // 1 == right
+        if (Input.GetKeyDown(KeyCode.Z)) SwitchLane(-1); // -1 == left
+        if (Input.GetKeyDown(KeyCode.X)) SwitchLane(1); // 1 == right
+        RotateWheels();
     }
 
     public void SwitchLane(int direction)
     {
-        if ((currentLane == 0 && direction == -1) || (currentLane == 3 && direction == 1) || isSwitchingLane) return;
+        if ((currentLane == 0 && direction == -1) || (currentLane == 3 && direction == 1) || isSwitchingLane ||
+            _isEndGame) return;
         StartCoroutine(Rotate(direction));
         StartCoroutine(ChangeLane(direction));
         StartCoroutine(RotateBack());
+    }
+
+    private void RotateWheels()
+    {
+        frontLeftWheel.transform.Rotate(Vector3.right * (WheelRotateSpeed * Time.deltaTime));
+        frontRightWheel.transform.Rotate(Vector3.right * (WheelRotateSpeed * Time.deltaTime));
+        rearLeftWheel.transform.Rotate(Vector3.right * (WheelRotateSpeed * Time.deltaTime));
+        rearRightWheel.transform.Rotate(Vector3.right * (WheelRotateSpeed * Time.deltaTime));
     }
 
     private IEnumerator Rotate(int direction)
@@ -66,7 +95,7 @@ public class Car : MonoBehaviour
 
     private IEnumerator ChangeLane(int direction)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         var t = 0f;
         currentLane += direction;
         var targetPosition = lanes[currentLane];
@@ -81,7 +110,7 @@ public class Car : MonoBehaviour
 
     private IEnumerator RotateBack()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         var t = 0f;
         while (t < 1f)
         {
@@ -92,5 +121,27 @@ public class Car : MonoBehaviour
         }
 
         isSwitchingLane = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            coinCollected.Play();
+            Destroy(other.gameObject);
+            score++;
+        }
+        else if (other.gameObject.CompareTag("Finish"))
+        {
+            _isEndGame = true;
+            uiButtons.SetActive(false);
+            scoreText.text = $"Your score\n {score} / {Coins.CoinCount}";
+            endGameScreen.SetActive(true);
+        }
+    }
+
+    public static bool IsEndGame()
+    {
+        return _isEndGame;
     }
 }
