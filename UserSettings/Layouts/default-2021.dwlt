@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15062
+  controlID: 46581
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 15063
+  controlID: 46464
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 15064
+  controlID: 46558
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -217,12 +217,12 @@ MonoBehaviour:
     height: 760
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -337,7 +337,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -401,7 +401,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: dce3ffffa0f1ffff3af2ffff30f3ffff2afbffffae610000b06200009c63000084650000
+      m_ExpandedIDs: b608feffb808feff5043feff9e51feff6a6ffeff5c99feff0c9afeffc6adfeff26c8feffe4e5feff18f1feff92f1feffac8fffffb291ffffb2afffff40b1ffff18cfffff26cfffffb2d3ffffc0dbffff30f8ffff2afbffff2cfbffff2efbfffff4ffffff1e5b0000765b0000be5b0000565c00009e180100bc180100fa180100d64701001248010088480100f84b0100604c0100b24e0100ce4e01000650010022500100b2500100c2510100de5101006e52010016530100325301003653010032640100ea7c0100f87c0100a290010098a201005abf010064cb0100bccc010004d80100bcf00100c4fa010058fb01008cfb010076230200443302002a340200463402004a340200b4340200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -502,7 +502,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -683,9 +683,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.926845, y: -0.03604889, z: 3.0940323}
+    m_Target: {x: 1.4290961, y: 0.11299303, z: -0.19678628}
     speed: 2
-    m_Value: {x: 9.926845, y: -0.03604889, z: 3.0940323}
+    m_Value: {x: 1.4290961, y: 0.11299303, z: -0.19678628}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -732,13 +732,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.56739235, y: -0.0024906397, z: 0.0016833538, w: 0.8234944}
+    m_Target: {x: -0.041215364, y: -0.79204476, z: 0.053783547, w: -0.6067655}
     speed: 2
-    m_Value: {x: 0.5673679, y: -0.0024905326, z: 0.0016832814, w: 0.8234589}
+    m_Value: {x: 0.041215364, y: 0.79204476, z: -0.05378355, w: 0.6067655}
   m_Size:
-    m_Target: 26.681929
+    m_Target: 1.2182654
     speed: 2
-    m_Value: 26.681929
+    m_Value: 1.2182654
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -804,22 +804,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Car
+    - Packages/com.nextmind.unitysdk/Runtime/Prefabs/NeuroTags/Built-in
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Car
+  - Packages/com.nextmind.unitysdk/Runtime/Prefabs/NeuroTags/Built-in
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Unity Projects\MemoryNM
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 685e0000
-    m_LastClickedID: 24168
-    m_ExpandedIDs: 000000001e5e0000205e0000225e0000245e0000265e0000285e00002a5e00002c5e00002e5e0000305e0000325e0000345e0000365e0000385e0000625e0000e85e0000ee5e0000f05e0000f45e000000ca9a3b
+    m_SelectedIDs: f8900100
+    m_LastClickedID: 102648
+    m_ExpandedIDs: 00000000721f0000485e00004a5e00004c5e00004e5e0000505e0000525e0000545e00005a5e00005c5e00005e5e0000605e0000625e0000665e0000685e00006a5e00006c5e0000da500100e4500100e8500100f250010010a3010012a3010018a301003ea3010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -847,7 +847,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001e5e0000205e0000225e0000245e0000265e0000285e00002a5e00002c5e00002e5e0000305e0000325e0000345e0000365e0000385e0000625e0000e85e0000ee5e0000f05e0000f45e000000ca9a3b
+    m_ExpandedIDs: 00000000721f0000485e00004a5e00004c5e00004e5e0000505e0000525e0000545e0000565e0000585e00005a5e00005c5e00005e5e0000605e0000625e0000665e0000685e00006a5e00006c5e0000da500100e4500100e8500100f250010010a3010012a3010018a301003ea3010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
